@@ -67,14 +67,26 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'https://github.com/sainnhe/sonokai'
 " --------- COLOR SCHEMES ---------------
 
+" Comment out code
+" usage --> gcc -> line | gc (visual) -> comment
+Plug 'https://github.com/tpope/vim-commentary'
+
 call plug#end()
 " END OF ALL PLUGS
 
 colorscheme sonokai
 set background=dark
 
-" ignore node modules
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|packagist'
+" ctrlp ignore 
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|packagist\|Zend'
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+if executable('rg')
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  let g:ctrlp_use_caching = 0
+endif
+let g:ctrlp_clear_cache_on_exit = 0
+" ctrlp ignore  END
 
 " enable js syntax highlighting
 " need to run --> git clone https://github.com/pangloss/vim-javascript.git
@@ -82,6 +94,7 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|packagist'
 let g:javascript_plugin_jsdoc = 1
 
 let mapleader = " "
+
 
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>hh :wincmd H<CR>
