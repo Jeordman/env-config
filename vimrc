@@ -71,6 +71,13 @@ Plug 'https://github.com/sainnhe/sonokai'
 " usage --> gcc -> line | gc (visual) -> comment
 Plug 'https://github.com/tpope/vim-commentary'
 
+" Git wrapper
+Plug 'tpope/vim-fugitive'
+
+" Show current branch and other info on file
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
 call plug#end()
 " END OF ALL PLUGS
 
@@ -93,9 +100,20 @@ let g:ctrlp_clear_cache_on_exit = 0
 " ~/.vim/pack/vim-javascript/start/vim-javascript
 let g:javascript_plugin_jsdoc = 1
 
+" set leader key
 let mapleader = " "
 
+" airline look settings
+let g:airline_left_sep='>'
 
+set nocompatible
+set mouse=a
+set cursorline
+let &t_SI = "\<esc>[5 q"  " blinking I-beam in insert mode
+let &t_SR = "\<esc>[3 q"  " blinking underline in replace mode
+let &t_EI = "\<esc>[2 q"  " block
+
+" Window commands
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>hh :wincmd H<CR>
 nnoremap <leader>j :wincmd j<CR>
@@ -104,13 +122,18 @@ nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>kk :wincmd K<CR>
 nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>ll :wincmd L<CR>
+
+" Resize commands
 nnoremap <leader>+ 10<C-w>+
 nnoremap <leader>- 10<C-w>-
 nnoremap <leader>< 10<C-w><
 nnoremap <leader>> 10<C-w>>
 nnoremap <leader>= <C-w>=
+
+" Open file tree, resize
 nnoremap <leader>b :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 nnoremap <leader>u :UndotreeShow<CR>
+
 " Go to tab by number
 noremap <leader>1 1gt
 noremap <leader>2 2gt
@@ -122,6 +145,7 @@ noremap <leader>7 7gt
 noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
+
 " Open terminal in new tab
 noremap <leader>tt :tab terminal<cr>
 " Open bottom terminal
@@ -130,5 +154,11 @@ noremap <leader>` :bo term<cr>
 tnoremap <Esc> <C-\><C-n>
 
 " COC
-nmap <leader>gd <Plug>(coc-definitions)
+nmap <leader>gdd <Plug>(coc-definitions)
 nmap <leader>gr <Plug>(coc-references)
+
+" vim fugitive
+nmap <leader>gs :G<cr>
+nmap <leader>gd :Gdiff<cr>
+nmap <leader>gf :diffget //3<cr>
+nmap <leader>gj :diffget //2<cr>
