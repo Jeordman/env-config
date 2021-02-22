@@ -1,132 +1,166 @@
-" basic highlighting
+" Basic highlight
 syntax on
 
 " load all packages
 packloadall
 
-" no sound effects
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=oa
+
+" no flashing of terminal
 set noerrorbells
 set visualbell
 set t_vb=
 
-" dont word wrap
+" dont wrap lines
 set nowrap
 
-" case sensitive search
+" search casing
 set ignorecase
 set smartcase
 
-" no vim .swap
-set noswapfile
-
-set nobackup
-
-" need to create this when on a new computer
-set undodir=~/.vim/undodir
-
-set undofile
-
-" get results of search while typing
+" search in middle of typeing
 set incsearch
 
+" no vim .swap
+set noswapfile
+set nobackup
+
+set undodir=~/.vim/undodir
+set undofile
+
+" mark 80 character line
 set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
-" turn hybrid line numbers on
+" relative number sidebar
 set number relativenumber
 set nu rnu
 
-" scroll before reaching bottom
+" scroll down 8 chars from borders
 set scrolloff=8
 
-" ALL PLUGS GO IN BETWEEN HERE
+" wait time between commands
+set timeoutlen=300
+
 call plug#begin('~/.vim/plugged')
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jremmen/vim-ripgrep'
 Plug 'leafgarland/typescript-vim'
-Plug 'https://github.com/kien/ctrlp.vim'
+Plug 'kien/ctrlp.vim'
 Plug 'mbbill/undotree'
-" Autocomplete
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" --------- COLOR SCHEMES ---------------
-" og color
-" Plug 'morhetz/gruvbox'
-"
-" Pitch black
-" Plug 'pgavlin/pulumi.vim'
 
-" Light Theme (Easy on the eyes)
-Plug 'https://github.com/sainnhe/sonokai'
-" --------- COLOR SCHEMES ---------------
+" Plug 'sainnhe/sonokai'
+Plug 'arzg/vim-colors-xcode'
 
-" Comment out code
-" usage --> gcc -> line | gc (visual) -> comment
-Plug 'https://github.com/tpope/vim-commentary'
+Plug 'tpope/vim-commentary' " Special comments
+Plug 'tpope/vim-fugitive' " Git integration
+Plug 'preservim/nerdtree' " filetree
+Plug 'prettier/vim-prettier', { 'do': 'npm install' } " linter
+Plug 'jbgutierrez/vim-better-comments' " colored comments
 
-" Git wrapper
-Plug 'tpope/vim-fugitive'
-
-" Show current branch and other info on file
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-" file manager
-Plug 'https://github.com/preservim/nerdtree'
-
-" formatter
-Plug 'prettier/vim-prettier', { 'do': 'npm install' }
-
-" Better comments
-Plug 'https://github.com/jbgutierrez/vim-better-comments'
-
-" Vim syntax
 Plug 'pangloss/vim-javascript'    " JavaScript support
 Plug 'leafgarland/typescript-vim' " TypeScript syntax
 Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
 Plug 'neoclide/coc-tsserver' " TS autocomplete
-
-" Allow searching from visual
 Plug 'nelstrom/vim-visual-star-search'
 
+Plug 'mg979/vim-visual-multi'
+
+Plug 'tpope/vim-surround' " insert chars around
+
+Plug 'mattn/emmet-vim' " code snippets
+
+Plug 'airblade/vim-gitgutter' " show file edits in gutter
+
+Plug 'frazrepo/vim-rainbow' " colorize bracket pairs
+
+Plug 'severin-lemaignan/vim-minimap' " minimap on right of file
+
+Plug 'ap/vim-css-color' " css color preview
+
+" Colored git location / current edit mode
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+Plug 'altercation/vim-colors-solarized'
+
+Plug 'mileszs/ack.vim' " global searcher
 call plug#end()
-" END OF ALL PLUGS
 
-" -----------------------------------------
-" Auto lint
-"
-" tab settings
+" ! tab settings
 set tabstop=4 softtabstop=4
-
-" Indent to same level as prev indentation
 set autoindent
-
-" < > shift lines over characters
 set shiftwidth=4
-
-" set tab to space
 set expandtab
-
-" tries to guess appropriate indentation
 set smartindent
 
-" when running at every change you may want to disable quickfix
-let g:prettier#quickfix_enabled = 0
-" autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
-" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+" AIRLINE Bar -------------------------------------------------------
+" sudo apt-get install fonts-powerline
+set guifont=DejaVu\ Sans:s12
 
-" number of spaces per indentation level: a number or 'auto' (use
-" softtabstop)
-" default: 'auto'
+let g:airline_theme='deus'
+" air-line
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+
+let g:airline#extensions#tabline#enabled = 1
+" -------------------------------------------------------
+
+" Ack ---------------------------------------------------
+" ack.vim --- {{{
+
+" Use ripgrep for searching ⚡️
+" Options include:
+" --vimgrep -> Needed to parse the rg response properly for ack.vim
+" --type-not sql -> Avoid huge sql file dumps as it slows down the search
+" --smart-case -> Search case insensitive if all lowercase pattern, Search
+"  case sensitively otherwise
+let g:ackprg = 'rg --vimgrep --type-not sql'
+
+" Auto close the Quickfix list after pressing '<enter>' on a list item
+let g:ack_autoclose = 1
+
+" Any empty ack search will search for the work the cursor is on
+let g:ack_use_cword_for_empty_search = 1
+
+" Don't jump to first match
+cnoreabbrev Ack Ack!
+
+" Maps <leader>/ so we're ready to type the search keyword
+nnoremap <Leader>= :Ack!<Space>
+" }}}
+
+" Navigate quickfix list with ease
+nnoremap <silent> [q :cprevious<CR>
+nnoremap <silent> ]q :cnext<CR>
+" -------------------------------------------------------
+
+let g:prettier#quickfix_enabled = 0
 let g:prettier#config#tab_width = 'auto'
 
-" use tabs instead of spaces: true, false, or auto (use the expandtab setting).
-" default: 'auto'
 let g:prettier#config#use_tabs = 'auto'
-" Partial format
 let g:prettier#partial_format=1
-" -----------------------------------------
 
-colorscheme sonokai
+" ! set colorscheme
+colorscheme xcodedark
 set background=dark
 
 " ctrlp ignore
@@ -138,26 +172,27 @@ if executable('rg')
   let g:ctrlp_use_caching = 0
 endif
 let g:ctrlp_clear_cache_on_exit = 0
-" ctrlp ignore  END
 
-" enable js syntax highlighting
-" need to run --> git clone https://github.com/pangloss/vim-javascript.git
-" ~/.vim/pack/vim-javascript/start/vim-javascript
 let g:javascript_plugin_jsdoc = 1
 
-" set leader key
+" ! set leader
 let mapleader = " "
 
-" airline look settings
-let g:airline_left_sep='>'
-
+" set mouse/cursor type
 set nocompatible
 set mouse=a
 let &t_SI = "\<esc>[5 q"  " blinking I-beam in insert mode
 let &t_SR = "\<esc>[3 q"  " blinking underline in replace mode
 let &t_EI = "\<esc>[2 q"  " block
 
-" Window commands
+" turn on rainbow colorizer
+let g:rainbow_active = 1
+
+" change minimap_highlight color
+let g:minimap_highlight='coclistbgblue'
+
+nnoremap <leader>mm :MinimapToggle<CR>
+
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>hh :wincmd H<CR>
 nnoremap <leader>j :wincmd j<CR>
@@ -167,18 +202,15 @@ nnoremap <leader>kk :wincmd K<CR>
 nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>ll :wincmd L<CR>
 
-" Resize commands
 nnoremap <leader>+ 10<C-w>+
 nnoremap <leader>- 10<C-w>-
 nnoremap <leader>< 10<C-w><
 nnoremap <leader>> 10<C-w>>
 nnoremap <leader>= <C-w>=
 
-" Open file tree, resize
 nnoremap <leader>b :NERDTree <bar> :vertical resize 35<CR>
 nnoremap <leader>u :UndotreeShow<CR>
 
-" Go to tab by number
 noremap <leader>1 1gt
 noremap <leader>2 2gt
 noremap <leader>3 3gt
@@ -190,50 +222,107 @@ noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
 
-" Open terminal in new tab
 noremap <leader>tt :tab terminal<cr>
-" Open bottom terminal
 noremap <leader>` :bo term<cr>
-"Allow esc to enter vim in term
 tnoremap <Esc> <C-\><C-n>
 
-" COC
-let g:coc_global_extensions = [ 'coc-tsserver' ]
+" Buffer management
+map qn :bn<cr>
+map qp :bp<cr>
+map qd :bd<cr>
+
+" sync open file with NERDTree
+" " Check if NERDTree is open or active
+function! IsNERDTreeOpen()
+    return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+endfunction
+
+function! SyncTree()
+    if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
+      NERDTreeFind
+      wincmd p
+    endif
+endfunction
+
+" Highlight currently open buffer in NERDTree
+autocmd BufEnter * call SyncTree()
+
+" coc config
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-eslint',
+  \ 'coc-prettier',
+  \ 'coc-json',
+  \ ]
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
+endfunction
+
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" Prettier
-xnoremap <leader>f :Prettier<cr>
+xnoremap <leader>f :PrettierFragment<cr>
 nmap <leader>f :Prettier<cr>
 
-" vim fugitive
 nmap <leader>gs :G<cr>
 nmap <leader>gd :Gdiff<cr>
 nmap <leader>gf :diffget //3<cr>
 nmap <leader>gj :diffget //2<cr>
 
-" line movement
 noremap <leader>up :m .-2<cr>
 noremap <leader>dn :m .+1<cr>
 
-
-" functions
 fun! TrimWhitespace()
     let l:save = winsaveview()
     keeppatterns %s/\s\+$//e
     call winrestview(l:save)
 endfun
 
+function! TogglePaste()
+    if(&paste == 0)
+        set paste
+        echo "Paste Mode Enabled"
+    else
+        set nopaste
+        echo "Paste Mode Disabled"
+    endif
+endfunction
+
+map <leader>p :call TogglePaste()<cr>
+
 augroup JEORDMAN
     autocmd!
     autocmd BufWritePre * :call TrimWhitespace()
 augroup END
 
-"" Special comment styling
 hi QuestionBetterComments ctermfg=blue ctermbg=black
 hi ErrorBetterComments ctermfg=red ctermbg=black
 hi HighlightBetterComments ctermfg=Magenta ctermbg=black
 hi StrikeoutBetterComments ctermfg=Yellow ctermbg=black
 hi TodoBetterComments ctermfg=red ctermbg=LightGray
+
+highlight Normal ctermbg=none
+highlight NonText ctermbg=none
+
+hi diffAdded cterm=bold ctermbg=10
+hi diffRemoved cterm=bold ctermbg=09
+
+hi diffFile cterm=NONE ctermfg=DarkBlue
+hi gitcommitDiff cterm=NONE ctermfg=DarkBlue
+hi diffIndexLine cterm=NONE ctermfg=DarkBlue
+hi diffLine cterm=NONE ctermfg=DarkBlue
+
+set laststatus=2
+set t_Co=256
