@@ -191,7 +191,16 @@ let g:rainbow_active = 1
 " change minimap_highlight color
 let g:minimap_highlight='coclistbgblue'
 
+set clipboard=unnamed
+
 nnoremap <leader>mm :MinimapToggle<CR>
+
+" Copy to clipboard w/ ctrl+c
+" https://stackoverflow.com/questions/44480829/how-to-copy-to-clipboard-in-vim-of-bash-on-windows
+" copy (write) highlighted text to .vimbuffer
+vmap <C-c> y:new ~/.vimbuffer<CR>VGp:x<CR> \| :!cat ~/.vimbuffer \| clip.exe <CR><CR>
+" paste from buffer
+map <C-v> :r ~/.vimbuffer<CR>
 
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>hh :wincmd H<CR>
@@ -230,22 +239,6 @@ tnoremap <Esc> <C-\><C-n>
 map qn :bn<cr>
 map qp :bp<cr>
 map qd :bd<cr>
-
-" sync open file with NERDTree
-" " Check if NERDTree is open or active
-function! IsNERDTreeOpen()
-    return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
-endfunction
-
-function! SyncTree()
-    if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
-      NERDTreeFind
-      wincmd p
-    endif
-endfunction
-
-" Highlight currently open buffer in NERDTree
-autocmd BufEnter * call SyncTree()
 
 " coc config
 let g:coc_global_extensions = [
