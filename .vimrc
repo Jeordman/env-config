@@ -107,7 +107,7 @@ set guifont=DejaVu\ Sans:s12
 
 let g:airline_theme='deus'
 " air-line
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
