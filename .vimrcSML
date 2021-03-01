@@ -40,7 +40,6 @@ set scrolloff=8
 set timeoutlen=300
 
 call plug#begin('~/.vim/plugged')
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jremmen/vim-ripgrep'
 Plug 'kien/ctrlp.vim'
 Plug 'arzg/vim-colors-xcode'
