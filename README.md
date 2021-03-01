@@ -6,6 +6,7 @@ installations:
 
 plugin manager --> 
     https://github.com/junegunn/vim-plug
+
 if you want a global linter --> 
     https://www.npmjs.com/package/prettier --> install globally
 
