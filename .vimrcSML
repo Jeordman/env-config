@@ -203,9 +203,6 @@ hi HighlightBetterComments ctermfg=Magenta ctermbg=black
 hi StrikeoutBetterComments ctermfg=Yellow ctermbg=black
 hi TodoBetterComments ctermfg=red ctermbg=LightGray
 
-highlight Normal ctermbg=none
-highlight NonText ctermbg=none
-
 hi diffAdded cterm=bold ctermbg=10
 hi diffRemoved cterm=bold ctermbg=09
 
