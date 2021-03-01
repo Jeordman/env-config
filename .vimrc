@@ -86,7 +86,12 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'altercation/vim-colors-solarized'
 
 Plug 'mileszs/ack.vim' " global searcher
+
+Plug 'neoclide/jsonc.vim' " json handle
 call plug#end()
+
+" tsconfig.json is actually jsonc, help TypeScript set the correct filetype
+autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 
 " ! tab settings
 set tabstop=4 softtabstop=4
@@ -94,6 +99,7 @@ set autoindent
 set shiftwidth=4
 set expandtab
 set smartindent
+auto BufReadPost	*.xx	retab! \t
 
 " AIRLINE Bar -------------------------------------------------------
 " sudo apt-get install fonts-powerline
@@ -156,7 +162,7 @@ nnoremap <silent> ]q :cnext<CR>
 let g:prettier#quickfix_enabled = 0
 let g:prettier#config#tab_width = 'auto'
 
-let g:prettier#config#use_tabs = 'auto'
+let g:prettier#config#use_tabs = 'false'
 let g:prettier#partial_format=1
 
 " ! set colorscheme
@@ -217,7 +223,7 @@ nnoremap <leader>< 10<C-w><
 nnoremap <leader>> 10<C-w>>
 nnoremap <leader>= <C-w>=
 
-nnoremap <leader>b :NERDTree <bar> :vertical resize 35<CR>
+nnoremap <leader>b :NERDTree <bar>:vertical resize 35<CR>
 nnoremap <leader>u :UndotreeShow<CR>
 
 noremap <leader>1 1gt
@@ -234,6 +240,9 @@ noremap <leader>0 :tablast<cr>
 noremap <leader>tt :tab terminal<cr>
 noremap <leader>` :bo term<cr>
 tnoremap <Esc> <C-\><C-n>
+
+" Map Ctrl-Backspace to delete the previous word in insert mode.
+imap <C-BS> <C-W>
 
 " Buffer management
 map qn :bn<cr>
