@@ -59,6 +59,7 @@ Plug 'preservim/nerdtree' " filetree
 Plug 'prettier/vim-prettier', { 'do': 'npm install' } " linter
 Plug 'jbgutierrez/vim-better-comments' " colored comments
 
+Plug 'ekalinin/Dockerfile.vim'
 Plug 'pangloss/vim-javascript'    " JavaScript support
 Plug 'leafgarland/typescript-vim' " TypeScript syntax
 Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
@@ -88,6 +89,17 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'mileszs/ack.vim' " global searcher
 
 Plug 'neoclide/jsonc.vim' " json handle
+
+" MARKDOWN
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+
+" JSDOC
+Plug 'heavenshell/vim-jsdoc', {
+  \ 'for': ['javascript', 'javascript.jsx','typescript'],
+  \ 'do': 'make install'
+\}
+
 call plug#end()
 
 " tsconfig.json is actually jsonc, help TypeScript set the correct filetype
@@ -285,6 +297,9 @@ nmap <leader>gj :diffget //2<cr>
 
 noremap <leader>up :m .-2<cr>
 noremap <leader>dn :m .+1<cr>
+
+" Format function
+nmap <leader>jd :JsDoc<cr>
 
 fun! TrimWhitespace()
     let l:save = winsaveview()
