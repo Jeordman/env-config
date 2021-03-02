@@ -1,3 +1,8 @@
+"" GLOBAL INSTALLs
+"" TypeScript (dont have to)
+"" lehre (for jsdoc)
+""      .vim/plugged/vim-jsdoc -> run "make install"
+
 " Basic highlight
 syntax on
 
