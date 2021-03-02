@@ -105,6 +105,8 @@ Plug 'heavenshell/vim-jsdoc', {
   \ 'do': 'make install'
 \}
 
+Plug 'Yggdroot/indentLine' " Show indent levels
+
 call plug#end()
 
 " tsconfig.json is actually jsonc, help TypeScript set the correct filetype
@@ -348,3 +350,5 @@ hi diffLine cterm=NONE ctermfg=DarkBlue
 
 set laststatus=2
 set t_Co=256
+
+set list listchars=tab:❘-,trail:·,extends:»,precedes:«,nbsp:×
