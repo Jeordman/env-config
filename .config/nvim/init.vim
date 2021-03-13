@@ -13,6 +13,7 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 "" TypeScript (dont have to)
 "" lehre (for jsdoc)
 ""      .nvim/plugged/vim-jsdoc -> run "make install"
+"" sudo apt-get install ripgrep
 
 " Basic highlight
 syntax on
@@ -20,7 +21,7 @@ syntax on
 " load all packages
 packloadall
 
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r
+" autocmd FileType * setlocal formatoptions-=c formatoptions-=r
 
 " no flashing of terminal
 set noerrorbells
@@ -41,7 +42,7 @@ set incsearch
 set noswapfile
 set nobackup
 
-set undodir=~/.vim/undodir
+set undodir=~/.config/nvim/undodir
 set undofile
 
 " mark 80 character line
@@ -63,7 +64,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jremmen/vim-ripgrep'
 Plug 'leafgarland/typescript-vim'
-Plug 'kien/ctrlp.vim'
+" Plug 'kien/ctrlp.vim'
 Plug 'mbbill/undotree'
 
 " Plug 'sainnhe/sonokai'
@@ -102,8 +103,6 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'altercation/vim-colors-solarized'
 
-Plug 'mileszs/ack.vim' " global searcher
-
 Plug 'neoclide/jsonc.vim' " json handle
 
 " MARKDOWN
@@ -119,6 +118,9 @@ Plug 'heavenshell/vim-jsdoc', {
 Plug 'Yggdroot/indentLine' " Show indent levels
 
 " attempt at a global searcher
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 call plug#end()
 
@@ -162,34 +164,9 @@ let g:airline_symbols.whitespace = 'Ξ'
 let g:airline#extensions#tabline#enabled = 1
 " -------------------------------------------------------
 
-" Ack ---------------------------------------------------
-" ack.vim --- {{{
-
-" Use ripgrep for searching ⚡️
-" Options include:
-" --vimgrep -> Needed to parse the rg response properly for ack.vim
-" --type-not sql -> Avoid huge sql file dumps as it slows down the search
-" --smart-case -> Search case insensitive if all lowercase pattern, Search
-"  case sensitively otherwise
-let g:ackprg = 'rg --vimgrep --type-not sql'
-
-" Auto close the Quickfix list after pressing '<enter>' on a list item
-let g:ack_autoclose = 1
-
-" Any empty ack search will search for the work the cursor is on
-let g:ack_use_cword_for_empty_search = 1
-
-" Don't jump to first match
-cnoreabbrev Ack Ack!
-
-" Maps <leader>/ so we're ready to type the search keyword
-nnoremap <Leader>= :Ack!<Space>
-" }}}
-
 " Navigate quickfix list with ease
 nnoremap <silent> [q :cprevious<CR>
 nnoremap <silent> ]q :cnext<CR>
-" -------------------------------------------------------
 
 let g:prettier#quickfix_enabled = 0
 let g:prettier#config#tab_width = 'auto'
@@ -201,15 +178,15 @@ let g:prettier#partial_format=1
 colorscheme xcodedark
 set background=dark
 
-" ctrlp ignore
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|packagist\|Zend'
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+" " ctrlp ignore
+" let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|packagist\|Zend'
+" let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
-if executable('rg')
-  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-  let g:ctrlp_use_caching = 0
-endif
-let g:ctrlp_clear_cache_on_exit = 0
+" if executable('rg')
+"   let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+"   let g:ctrlp_use_caching = 0
+" endif
+" let g:ctrlp_clear_cache_on_exit = 0
 
 let g:javascript_plugin_jsdoc = 1
 
@@ -239,6 +216,7 @@ nnoremap <leader>mm :MinimapToggle<CR>
 vmap <C-c> y:new ~/.vimbuffer<CR>VGp:x<CR> \| :!cat ~/.vimbuffer \| clip.exe <CR><CR>
 " paste from buffer
 map <C-v> :r ~/.vimbuffer<CR>
+
 
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>hh :wincmd H<CR>
@@ -365,3 +343,9 @@ set laststatus=2
 set t_Co=256
 
 set list listchars=tab:❘-,trail:·,extends:»,precedes:«,nbsp:×
+
+" Find files using telescope command line
+" https://www.youtube.com/watch?v=Es76v7WAqMg&t=10s
+nnoremap <leader>ff <cmd>Telescope find_files<CR>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<CR>
