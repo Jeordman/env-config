@@ -51,6 +51,7 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 " relative number sidebar
 set number relativenumber
+" set number
 set nu rnu
 
 " scroll down 8 chars from borders
@@ -63,7 +64,6 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jremmen/vim-ripgrep'
-Plug 'leafgarland/typescript-vim'
 " Plug 'kien/ctrlp.vim'
 Plug 'mbbill/undotree'
 
@@ -122,6 +122,9 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
+" Golang support
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
 call plug#end()
 
 " tsconfig.json is actually jsonc, help TypeScript set the correct filetype
@@ -162,6 +165,7 @@ let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
 
 let g:airline#extensions#tabline#enabled = 1
+" let g:airline_section_b = '%{strftime("%H:%M")}'
 " -------------------------------------------------------
 
 " Navigate quickfix list with ease
@@ -247,6 +251,7 @@ noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
 
+noremap <leader>tn :tabnew<cr>
 noremap <leader>tt :tab terminal<cr>
 noremap <leader>` :bo term<cr>
 tnoremap <Esc> <C-\><C-n>
@@ -346,6 +351,47 @@ set list listchars=tab:❘-,trail:·,extends:»,precedes:«,nbsp:×
 
 " Find files using telescope command line
 " https://www.youtube.com/watch?v=Es76v7WAqMg&t=10s
-nnoremap <leader>ff <cmd>Telescope find_files<CR>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<CR>
+" nnoremap <leader>ff <cmd>Telescope find_files<CR>
+nnoremap <silent> <C-p> :Telescope find_files<CR>
+" nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <silent> <C-f> :Telescope live_grep<CR>
+nnoremap <leader>tb <cmd>Telescope buffers<CR>
+
+" paste what was last YANKED
+" vnoremap p "0p
+
+"" GOLANG
+filetype plugin indent on
+
+set autowrite
+
+" Go syntax highlighting
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_operators = 1
+
+" Auto formatting and importing
+let g:go_fmt_autosave = 1
+let g:go_fmt_command = "goimports"
+
+" Status line types/signatures
+let g:go_auto_type_info = 1
+
+" Run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+
+" Auto build and test in go files
+augroup auto_go
+	autocmd!
+	autocmd BufWritePost *.go :GoBuild
+	autocmd BufWritePost *_test.go :GoTest
+augroup end
