@@ -6,7 +6,7 @@ fi
 # --------
 # Aliases
 # --------
-alias v="nvim"
+alias v="~/squashfs-root/AppRun"
 
 alias dcst="docker-compose start"
 alias dcu="docker-compose up -d"
