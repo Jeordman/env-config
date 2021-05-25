@@ -338,7 +338,7 @@ hi diffLine cterm=NONE ctermfg=DarkBlue
 set laststatus=2
 set t_Co=256
 
-set list listchars=tab:Γ¥ÿ-,trail:┬╖,extends:┬╗,precedes:┬½,nbsp:├ù
+set list listchars=tab:❘-,trail:·,extends:»,precedes:«,nbsp:×
 
 " Find files using telescope command line
 " https://www.youtube.com/watch?v=Es76v7WAqMg&t=10s
