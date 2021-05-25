@@ -10,4 +10,5 @@
 ### 2) Install neovim*
 ## currently neovim does not work with TELESCOPE. Must use neovim (nightly) beta
 https://github.com/neovim/neovim/releases/tag/nightly
-### 3) insert files into root of computer --> make sure you do .tmux.conf BEFORE .bashrc
+### 3) insert files into root of computer --> make sure you do .tmux.conf BEFORE .bashrc (or use ./copy.sh)
+### 4) open neovim config and run :PlugInstall
