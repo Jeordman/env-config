@@ -1,3 +1,3 @@
 # env-config
 
-!(https://giphy.com/gifs/4AlGdV3PVjBTVT6GiU)[]
+!(https://media.giphy.com/media/4AlGdV3PVjBTVT6GiU/giphy.gif)[]
