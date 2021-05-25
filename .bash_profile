@@ -36,6 +36,7 @@ alias wb="cd ~/conexed-whiteboard"
 alias docc="cd ~/doc-converter"
 alias hd="cd ~/host-dictionary"
 alias api="cd ~/api-craniumcafe"
+alias ap="cd ~/archive-player"
 
 # Tag WB Script shorthand
 # alias wbtest="~/conexed-whiteboard/scripts && ./docker-send-test.sh"
@@ -47,6 +48,7 @@ alias wbu="cd ~/conexed-whiteboard && dcu"
 alias doccu="cd ~/doc-converter && dcu"
 alias hdu="cd ~/host-dictionary && dcu"
 alias apiu="cd ~/api-craniumcafe && dcu"
+alias apu="cd ~/archive-player && dcu"
 
 # Start wb be and fe
 alias wbfe='cd ~/conexed-whiteboard && docker exec -it conexed-whiteboard sh -c "cd src/client && npm install && npm run build:dev-watch"'
