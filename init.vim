@@ -124,8 +124,8 @@ Plug 'nvim-telescope/telescope.nvim'
 
 " Golang support
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
 call plug#end()
+au BufReadPost *.ezt set syntax=html
 
 " tsconfig.json is actually jsonc, help TypeScript set the correct filetype
 autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
@@ -151,18 +151,18 @@ if !exists('g:airline_symbols')
 endif
 
 " unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
+let g:airline_left_sep = '┬╗'
+let g:airline_left_sep = 'Γû╢'
+let g:airline_right_sep = '┬½'
+let g:airline_right_sep = 'ΓùÇ'
+let g:airline_symbols.linenr = 'ΓÉè'
+let g:airline_symbols.linenr = 'ΓÉñ'
+let g:airline_symbols.linenr = '┬╢'
+let g:airline_symbols.branch = 'ΓÄç'
+let g:airline_symbols.paste = '╧ü'
+let g:airline_symbols.paste = '├₧'
+let g:airline_symbols.paste = 'ΓêÑ'
+let g:airline_symbols.whitespace = '╬₧'
 
 let g:airline#extensions#tabline#enabled = 1
 " let g:airline_section_b = '%{strftime("%H:%M")}'
@@ -182,15 +182,8 @@ let g:prettier#partial_format=1
 colorscheme xcodedark
 set background=dark
 
-" " ctrlp ignore
-" let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|packagist\|Zend'
-" let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-
-" if executable('rg')
-"   let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-"   let g:ctrlp_use_caching = 0
-" endif
-" let g:ctrlp_clear_cache_on_exit = 0
+highlight Normal ctermbg=NONE ctermbg=NONE
+" highlight NonText ctermbg=NONE ctermbg=NONE
 
 let g:javascript_plugin_jsdoc = 1
 
@@ -272,6 +265,7 @@ let g:coc_global_extensions = [
   \ 'coc-eslint',
   \ 'coc-prettier',
   \ 'coc-json',
+  \ 'coc-phpls',
   \ ]
 
 " Use K to show documentation in preview window
@@ -333,9 +327,6 @@ hi HighlightBetterComments ctermfg=Magenta ctermbg=black
 hi StrikeoutBetterComments ctermfg=Yellow ctermbg=black
 hi TodoBetterComments ctermfg=red ctermbg=LightGray
 
-highlight Normal ctermbg=none
-highlight NonText ctermbg=none
-
 hi diffAdded cterm=bold ctermbg=10
 hi diffRemoved cterm=bold ctermbg=09
 
@@ -347,7 +338,7 @@ hi diffLine cterm=NONE ctermfg=DarkBlue
 set laststatus=2
 set t_Co=256
 
-set list listchars=tab:❘-,trail:·,extends:»,precedes:«,nbsp:×
+set list listchars=tab:Γ¥ÿ-,trail:┬╖,extends:┬╗,precedes:┬½,nbsp:├ù
 
 " Find files using telescope command line
 " https://www.youtube.com/watch?v=Es76v7WAqMg&t=10s
@@ -395,3 +386,4 @@ augroup auto_go
 	autocmd BufWritePost *.go :GoBuild
 	autocmd BufWritePost *_test.go :GoTest
 augroup end
+
