@@ -124,7 +124,13 @@ Plug 'nvim-telescope/telescope.nvim'
 
 " Golang support
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+Plug 'APZelos/blamer.nvim'
+
 call plug#end()
+
+let g:blamer_enabled = 1
+
 au BufReadPost *.ezt set syntax=html
 
 " tsconfig.json is actually jsonc, help TypeScript set the correct filetype
