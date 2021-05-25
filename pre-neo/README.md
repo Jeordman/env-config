@@ -1,3 +1,5 @@
+# BEFORE MIGRATING TO NEOVIM (DEPRECATED)
+
 # vimsettings
 
 Welcome to my .vimrc file
