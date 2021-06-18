@@ -103,6 +103,8 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+source /usr/share/bash-completion/completions/git
+
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
