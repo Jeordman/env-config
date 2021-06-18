@@ -6,6 +6,7 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
         endif
 
 " Basic highlight
+filetype plugin on
 syntax on
 
 " load all packages
@@ -78,7 +79,6 @@ Plug 'ap/vim-css-color' " css color preview
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 "
-Plug 'neoclide/jsonc.vim' " json handle
 Plug 'heavenshell/vim-jsdoc', {
   \ 'for': ['javascript', 'javascript.jsx','typescript'],
   \ 'do': 'make install'
@@ -95,16 +95,10 @@ call plug#end()
 "colorscheme
 set background=dark
 colorscheme gruvbox
-g:gruvbox_contrast_dark='soft'
-g:gruvbox_improved_warnings=1
-g:gruvbox_improved_strings=1
-" highlight Normal ctermbg=NONE ctermbg=NONE " see through terminal
 
-let g:blamer_enabled = 1
+let g:blamer_enabled = 0
 
-au BufReadPost *.ezt set syntax=html
-
-autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc " read tsconfig
+" autocmd BufRead,BufNewFile tsconfig.json set filetype=json " read tsconfig
 
 " tab
 set tabstop=4 softtabstop=4
@@ -204,7 +198,6 @@ noremap <leader>0 :tablast<cr>
 noremap <leader>tn :tabnew<cr>
 noremap <leader>tt :tab terminal<cr>
 noremap <leader>` :bo term<cr>
-tnoremap <Esc> <C-\><C-n>
 
 " Map Ctrl-Backspace to delete the previous word in insert mode.
 imap <C-BS> <C-W>
@@ -223,6 +216,7 @@ let g:coc_global_extensions = [
   \ 'coc-prettier',
   \ 'coc-json',
   \ 'coc-phpls',
+  \ 'coc-html'
   \ ]
 
 " Use K to show documentation
@@ -306,7 +300,6 @@ nnoremap <silent> <C-f> :Telescope live_grep<CR>
 nnoremap <leader>tb <cmd>Telescope buffers<CR>
 
 " GOLANG
-filetype plugin indent on
 set autowrite
 " Go syntax highlighting
 let g:go_highlight_fields = 1
@@ -334,4 +327,7 @@ augroup auto_go
 	autocmd BufWritePost *.go :GoBuild
 	autocmd BufWritePost *_test.go :GoTest
 augroup end
-"
+
+augroup filetypedetect
+    au BufReadPost *.php,*.phtml,*.html set syntax=javascript
+augroup END
