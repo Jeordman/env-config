@@ -13,6 +13,7 @@ syntax on
 packloadall
 
 " no flashing of terminal
+"
 set noerrorbells
 set visualbell
 set t_vb=
@@ -67,6 +68,7 @@ Plug 'pangloss/vim-javascript'    " JavaScript support
 Plug 'leafgarland/typescript-vim' " TypeScript syntax
 Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } " golang support
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-tsserver' " TS autocomplete
 "
 Plug 'mg979/vim-visual-multi' " type on multiple lines at once
@@ -85,6 +87,8 @@ Plug 'heavenshell/vim-jsdoc', {
 Plug 'Yggdroot/indentLine' " Show indent levels
 "
 Plug 'APZelos/blamer.nvim' " Show who wrote lines on wait
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 
 "colorscheme
@@ -199,16 +203,15 @@ map qp :bp<cr>
 map qd :bd<cr>
 
 " coc languages config
-" let g:coc_global_extensions = [
-"   \ 'coc-snippets',
-"   \ 'coc-pairs',
-"   \ 'coc-tsserver',
-"   \ 'coc-eslint',
-"   \ 'coc-prettier',
-"   \ 'coc-json',
-"   \ 'coc-phpls',
-"   \ 'coc-html'
-"   \ ]
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-prettier',
+  \ 'coc-json',
+  \ 'coc-phpls',
+  \ 'coc-html'
+  \ ]
 
 " Use K to show documentation
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -220,10 +223,10 @@ function! s:show_documentation()
     endif
 endfunction
 
-" nmap <silent> gd <Plug>(coc-definition)
-" nmap <silent> gy <Plug>(coc-type-definition)
-" nmap <silent> gi <Plug>(coc-implementation)
-" nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 " formatting on button press
 xnoremap <leader>f :PrettierFragment<cr>
@@ -321,4 +324,3 @@ augroup end
 
 augroup filetypedetect
     au BufReadPost *.php,*.phtml,*.html set syntax=javascript
-a
