@@ -3,7 +3,7 @@
 
 ## Jeordman's dev environment settings/useful config info
 
-![](https://media.giphy.com/media/4AlGdV3PVjBTVT6GiU/giphy.gif)
+![](https://media.giphy.com/media/fh6nwbYdOZ18ObiAf8/giphy.gif)
 
 ### 0) chmod 700 install scripts and copy script
 ### 1) Run the install file (/install/__.sh) for current os to install needed packages
