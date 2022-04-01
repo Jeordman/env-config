@@ -19,3 +19,10 @@ alias init="v ~/.config/nvim/init.vim"
 alias vimrc="v ~/.config/nvim/init.vim"
 alias v="~/nvim-osx64/bin/nvim"
 alias profile="v ~/.bash_profile"
+
+
+alias backoffice="cd ~/younique/backoffice"
+alias commission_engine="cd ~/younique/commission_engine"
+alias danzek="cd ~/younique/danzek"
+alias leela="cd ~/younique/leela"
+alias ycode="cd ~/younique/leela/code"
