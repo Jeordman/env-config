@@ -1,5 +1,5 @@
 Install Iterm2
-![https://iterm2.com/downloads.html]()
+https://iterm2.com/downloads.html
 
 Install python
 ```
@@ -12,7 +12,7 @@ $ brew install tmux
 ```
 
 Install neovim
-![https://github.com/neovim/neovim]()
+https://github.com/neovim/neovim
 1) Download nvim-macos.tar.gz
 2) Extract: tar xzvf nvim-macos.tar.gz
 3) Run ./nvim-osx64/bin/nvim
