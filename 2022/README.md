@@ -1,5 +1,5 @@
 Install Iterm2
-!(https://iterm2.com/downloads.html)[]
+![https://iterm2.com/downloads.html]()
 
 Install python
 ```
