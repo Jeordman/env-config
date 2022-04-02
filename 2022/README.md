@@ -1,7 +1,7 @@
 Install Iterm2
 https://iterm2.com/downloads.html
 
-Install python
+Install Ripgrep
 ```
 $ brew install ripgrep
 ```
