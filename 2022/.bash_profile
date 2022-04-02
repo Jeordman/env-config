@@ -7,7 +7,6 @@ export PS1="🌳 \[\033[01;36m\]\w 🌳 :  \[\033[01;37m\]"
 
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
-export NPM_TOKEN="3c179f0c-59d6-4558-bef6-9ed0bcda401d"
 
 dexec() {
     docker exec -it "$1" /bin/bash
