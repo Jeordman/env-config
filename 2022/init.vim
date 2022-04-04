@@ -60,7 +60,8 @@ Plug 'mbbill/undotree'
 Plug 'tpope/vim-commentary' " Special comments
 Plug 'tpope/vim-fugitive' " Git integration
 Plug 'preservim/nerdtree' " filetree
-Plug 'prettier/vim-prettier', { 'do': 'npm install' } " linter
+" post install (yarn install | npm install) then load plugin only for editing supported files
+Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 Plug 'jbgutierrez/vim-better-comments' " colored comments
 Plug 'ekalinin/Dockerfile.vim' " Style dockerfiles
 " langs
@@ -89,6 +90,13 @@ Plug 'Yggdroot/indentLine' " Show indent levels
 Plug 'APZelos/blamer.nvim' " Show who wrote lines on wait
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+
+Plug 'github/copilot.vim'
+
+" Svelte support
+Plug 'othree/html5.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'evanleck/vim-svelte', {'branch': 'main'}
 call plug#end()
 
 "colorscheme
@@ -210,7 +218,8 @@ let g:coc_global_extensions = [
   \ 'coc-prettier',
   \ 'coc-json',
   \ 'coc-phpls',
-  \ 'coc-html'
+  \ 'coc-html',
+  \ 'coc-svelte'
   \ ]
 
 " Use K to show documentation
@@ -301,11 +310,14 @@ let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_operators = 1
+
 " Auto formatting and importing
 let g:go_fmt_autosave = 1
 let g:go_fmt_command = "goimports"
+
 " Status line types/signatures
 let g:go_auto_type_info = 1
+
 " Run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
   let l:file = expand('%')
@@ -315,6 +327,7 @@ function! s:build_go_files()
     call go#cmd#Build(0)
   endif
 endfunction
+
 " Auto build and test in go files
 augroup auto_go
 	autocmd!
@@ -322,5 +335,7 @@ augroup auto_go
 	autocmd BufWritePost *_test.go :GoTest
 augroup end
 
-augroup filetypedetect
-    au BufReadPost *.php,*.phtml,*.html set syntax=javascript
+let g:svelte_preprocessors = ['typescript']
+
+" augroup filetypedetect
+"     au BufReadPost *.php,*.phtml,*.html set syntax=javascript
