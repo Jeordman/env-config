@@ -54,7 +54,6 @@ call plug#begin('~/.config/nvim/plugged')
 " Plug 'NLKNguyen/papercolor-theme'
 Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
-"
 Plug 'jremmen/vim-ripgrep'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-commentary' " Special comments
@@ -75,7 +74,6 @@ Plug 'neoclide/coc-tsserver' " TS autocomplete
 Plug 'mg979/vim-visual-multi' " type on multiple lines at once
 Plug 'tpope/vim-surround' " insert chars around
 Plug 'airblade/vim-gitgutter' " show file edits in gutter
-Plug 'frazrepo/vim-rainbow' " colorize bracket pairs
 Plug 'ap/vim-css-color' " css color preview
 " Colored git location / current edit mode
 Plug 'vim-airline/vim-airline'
@@ -97,17 +95,19 @@ Plug 'github/copilot.vim'
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
+
+Plug 'StanAngeloff/php.vim'
+Plug 'modess/vim-phpcolors'
 call plug#end()
 
-"colorscheme
+"color theme
 set background=dark
 colorscheme gruvbox
 
+
 let g:blamer_enabled = 0
 
-" autocmd BufRead,BufNewFile tsconfig.json set filetype=json " read tsconfig
-
-" tab
+"! tab
 set tabstop=4 softtabstop=4
 set autoindent
 set shiftwidth=4
@@ -212,14 +212,15 @@ map qd :bd<cr>
 
 " coc languages config
 let g:coc_global_extensions = [
+  \ 'coc-json',
   \ 'coc-snippets',
   \ 'coc-pairs',
   \ 'coc-tsserver',
   \ 'coc-prettier',
-  \ 'coc-json',
   \ 'coc-phpls',
   \ 'coc-html',
-  \ 'coc-svelte'
+  \ 'coc-svelte',
+  \ 'coc-docker'
   \ ]
 
 " Use K to show documentation
@@ -337,5 +338,10 @@ augroup end
 
 let g:svelte_preprocessors = ['typescript']
 
-" augroup filetypedetect
-"     au BufReadPost *.php,*.phtml,*.html set syntax=javascript
+augroup filetypedetect
+    au BufReadPost *.php,*.phtml,*.html set syntax=php
+"
+"" tsconfig.json is actually jsonc, help TypeScript set the correct filetype
+autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
+
+let g:vim_json_conceal=0
