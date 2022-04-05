@@ -28,3 +28,11 @@ Install neovim extensions
 1) open ```~/.config/nvim/init.vim```
 2) run :PlugInstall
 3) run :CocInstall
+4) run :CocConfig
+5) paste this:
+```
+{
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextCurrentLineOnly": false
+}
+```
