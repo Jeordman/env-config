@@ -247,6 +247,9 @@ nmap <leader>gs :G<cr>
 nmap <leader>gd :Gdiff<cr>
 nmap <leader>gf :diffget //3<cr>
 nmap <leader>gj :diffget //2<cr>
+nmap <leader>gc :Git commit<cr>
+nmap <leader>gp :Git push<cr>
+
 
 " auto run jsdoc on function
 nmap <leader>jd :JsDoc<cr>
@@ -301,6 +304,7 @@ set list listchars=tab:❘-,trail:·,extends:»,precedes:«,nbsp:×
 nnoremap <silent> <C-p> :Telescope find_files<CR>
 " nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <silent> <C-f> :Telescope live_grep<CR>
+nnoremap <silent> <C-i> ::Telescope resume<CR>
 nnoremap <leader>tb <cmd>Telescope buffers<CR>
 
 " GOLANG
@@ -345,3 +349,4 @@ augroup filetypedetect
 autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 
 let g:vim_json_conceal=0
+let NERDTreeShowHidden=1
