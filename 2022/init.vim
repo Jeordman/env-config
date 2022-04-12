@@ -54,6 +54,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Plug 'NLKNguyen/papercolor-theme'
 Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
+Plug 'Mofiqul/vscode.nvim'
 Plug 'jremmen/vim-ripgrep'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-commentary' " Special comments
@@ -98,11 +99,14 @@ Plug 'evanleck/vim-svelte', {'branch': 'main'}
 
 Plug 'StanAngeloff/php.vim'
 Plug 'modess/vim-phpcolors'
+
+" Plug 'nvim-telescope/telescope-file-browser.nvim'
 call plug#end()
 
 "color theme
 set background=dark
-colorscheme gruvbox
+let g:vscode_style = "dark"
+colorscheme vscode
 
 
 let g:blamer_enabled = 0
@@ -220,7 +224,8 @@ let g:coc_global_extensions = [
   \ 'coc-phpls',
   \ 'coc-html',
   \ 'coc-svelte',
-  \ 'coc-docker'
+  \ 'coc-docker',
+  \ 'coc-go'
   \ ]
 
 " Use K to show documentation
@@ -249,6 +254,7 @@ nmap <leader>gf :diffget //3<cr>
 nmap <leader>gj :diffget //2<cr>
 nmap <leader>gc :Git commit<cr>
 nmap <leader>gp :Git push<cr>
+nmap <leader>gpu :Git push -u origin HEAD<cr>
 
 
 " auto run jsdoc on function
@@ -301,11 +307,11 @@ set list listchars=tab:❘-,trail:·,extends:»,precedes:«,nbsp:×
 " Find files using telescope command line
 " https://www.youtube.com/watch?v=Es76v7WAqMg&t=10s
 " nnoremap <leader>ff <cmd>Telescope find_files<CR>
-nnoremap <silent> <C-p> :Telescope find_files<CR>
+nnoremap <silent> <C-p> :Telescope find_files theme=dropdown<CR>
 " nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <silent> <C-f> :Telescope live_grep<CR>
-nnoremap <silent> <C-i> ::Telescope resume<CR>
-nnoremap <leader>tb <cmd>Telescope buffers<CR>
+nnoremap <silent> <C-i> :Telescope resume<CR>
+nnoremap <silent> <C-b> :Telescope buffers<CR>
 
 " GOLANG
 set autowrite
@@ -323,22 +329,24 @@ let g:go_fmt_command = "goimports"
 " Status line types/signatures
 let g:go_auto_type_info = 1
 
-" Run :GoBuild or :GoTestCompile based on the go file
-function! s:build_go_files()
-  let l:file = expand('%')
-  if l:file =~# '^\f\+_test\.go$'
-    call go#test#Test(0, 1)
-  elseif l:file =~# '^\f\+\.go$'
-    call go#cmd#Build(0)
-  endif
-endfunction
+let g:go_doc_keywordprg_enabled = 0
 
-" Auto build and test in go files
-augroup auto_go
-	autocmd!
-	autocmd BufWritePost *.go :GoBuild
-	autocmd BufWritePost *_test.go :GoTest
-augroup end
+" " Run :GoBuild or :GoTestCompile based on the go file
+" function! s:build_go_files()
+"   let l:file = expand('%')
+"   if l:file =~# '^\f\+_test\.go$'
+"     call go#test#Test(0, 1)
+"   elseif l:file =~# '^\f\+\.go$'
+"     call go#cmd#Build(0)
+"   endif
+" endfunction
+
+" " Auto build and test in go files
+" augroup auto_go
+" 	autocmd!
+" 	autocmd BufWritePost *.go :GoBuild
+" 	autocmd BufWritePost *_test.go :GoTest
+" augroup end
 
 let g:svelte_preprocessors = ['typescript']
 
