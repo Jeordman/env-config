@@ -1,5 +1,5 @@
-Install node/npm (for prettier install)
-https://nodejs.org/en/download/
+Install yarn (for prettier install)
+https://classic.yarnpkg.com/en/docs/install
 
 Install Iterm2
 https://iterm2.com/downloads.html
