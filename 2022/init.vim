@@ -60,11 +60,9 @@ Plug 'mbbill/undotree'
 Plug 'tpope/vim-commentary' " Special comments
 Plug 'tpope/vim-fugitive' " Git integration
 Plug 'preservim/nerdtree' " filetree
-" post install (yarn install | npm install) then load plugin only for editing supported files
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'npm install --frozen-lockfile --production',
-  \ 'branch': 'release/0.x'
-  \ }
+
+Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+
 Plug 'jbgutierrez/vim-better-comments' " colored comments
 Plug 'ekalinin/Dockerfile.vim' " Style dockerfiles
 " langs
