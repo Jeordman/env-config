@@ -61,7 +61,10 @@ Plug 'tpope/vim-commentary' " Special comments
 Plug 'tpope/vim-fugitive' " Git integration
 Plug 'preservim/nerdtree' " filetree
 " post install (yarn install | npm install) then load plugin only for editing supported files
-Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'npm install --frozen-lockfile --production',
+  \ 'branch': 'release/0.x'
+  \ }
 Plug 'jbgutierrez/vim-better-comments' " colored comments
 Plug 'ekalinin/Dockerfile.vim' " Style dockerfiles
 " langs
@@ -74,7 +77,12 @@ Plug 'neoclide/coc-tsserver' " TS autocomplete
 "
 Plug 'mg979/vim-visual-multi' " type on multiple lines at once
 Plug 'tpope/vim-surround' " insert chars around
-Plug 'airblade/vim-gitgutter' " show file edits in gutter
+" Plug 'airblade/vim-gitgutter' " show file edits in gutter
+if has('nvim') || has('patch-8.0.902')
+  Plug 'mhinz/vim-signify'
+else
+  Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
+endif
 Plug 'ap/vim-css-color' " css color preview
 " Colored git location / current edit mode
 Plug 'vim-airline/vim-airline'
@@ -99,8 +107,6 @@ Plug 'evanleck/vim-svelte', {'branch': 'main'}
 
 Plug 'StanAngeloff/php.vim'
 Plug 'modess/vim-phpcolors'
-
-" Plug 'nvim-telescope/telescope-file-browser.nvim'
 call plug#end()
 
 "color theme
@@ -159,8 +165,6 @@ let &t_SI = "\<esc>[5 q"  " blinking I-beam in insert mode
 let &t_SR = "\<esc>[3 q"  " blinking underline in replace mode
 let &t_EI = "\<esc>[2 q"  " block
 
-let g:rainbow_active = 1 " rainbow pairs
-
 set clipboard=unnamed
 
 " Copy to clipboard w/ ctrl+c
@@ -218,7 +222,6 @@ map qd :bd<cr>
 let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-snippets',
-  \ 'coc-pairs',
   \ 'coc-tsserver',
   \ 'coc-prettier',
   \ 'coc-phpls',
@@ -252,10 +255,8 @@ nmap <leader>gs :G<cr>
 nmap <leader>gd :Gdiff<cr>
 nmap <leader>gf :diffget //3<cr>
 nmap <leader>gj :diffget //2<cr>
-nmap <leader>gc :Git commit<cr>
 nmap <leader>gp :Git push<cr>
 nmap <leader>gpu :Git push -u origin HEAD<cr>
-
 
 " auto run jsdoc on function
 nmap <leader>jd :JsDoc<cr>
@@ -277,7 +278,7 @@ function! TogglePaste()
     endif
 endfunction
 
-map <leader>p :call TogglePaste()<cr>
+map <leader>pp :call TogglePaste()<cr>
 
 augroup JEORDMAN
     autocmd!
@@ -308,6 +309,7 @@ set list listchars=tab:❘-,trail:·,extends:»,precedes:«,nbsp:×
 " https://www.youtube.com/watch?v=Es76v7WAqMg&t=10s
 " nnoremap <leader>ff <cmd>Telescope find_files<CR>
 nnoremap <silent> <C-p> :Telescope find_files theme=dropdown<CR>
+nnoremap <leader>p  :Telescope find_files theme=dropdown hidden=true<CR>
 " nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <silent> <C-f> :Telescope live_grep<CR>
 nnoremap <silent> <C-i> :Telescope resume<CR>
@@ -358,3 +360,4 @@ autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 
 let g:vim_json_conceal=0
 let NERDTreeShowHidden=1
+let b:coc_pairs_disabled = 1
