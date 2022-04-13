@@ -1,3 +1,6 @@
+Install node/npm (for prettier install)
+https://nodejs.org/en/download/
+
 Install Iterm2
 https://iterm2.com/downloads.html
 
