@@ -39,3 +39,12 @@ Install neovim extensions
   "diagnostic.virtualTextCurrentLineOnly": false
 }
 ```
+
+
+## ubuntu
+
+Remap escape tool - additional layout options
+```
+sudo apt-get install gnome-tweak-tool
+```
+
