@@ -40,6 +40,11 @@ Install neovim extensions
 }
 ```
 
+Activate copilot
+```
+:Copilot setup
+```
+
 
 ## ubuntu
 
