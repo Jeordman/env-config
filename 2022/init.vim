@@ -81,7 +81,6 @@ if has('nvim') || has('patch-8.0.902')
 else
   Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
 endif
-Plug 'ap/vim-css-color' " css color preview
 " Colored git location / current edit mode
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -105,6 +104,8 @@ Plug 'evanleck/vim-svelte', {'branch': 'main'}
 
 Plug 'StanAngeloff/php.vim'
 Plug 'modess/vim-phpcolors'
+
+Plug 'folke/zen-mode.nvim'
 call plug#end()
 
 "color theme
@@ -226,7 +227,9 @@ let g:coc_global_extensions = [
   \ 'coc-html',
   \ 'coc-svelte',
   \ 'coc-docker',
-  \ 'coc-go'
+  \ 'coc-go',
+  \ 'coc-sh',
+  \ 'coc-yaml',
   \ ]
 
 " Use K to show documentation
@@ -347,6 +350,11 @@ let g:go_doc_keywordprg_enabled = 0
 " 	autocmd BufWritePost *.go :GoBuild
 " 	autocmd BufWritePost *_test.go :GoTest
 " augroup end
+
+lua << EOF
+  require("zen-mode").setup {
+  }
+EOF
 
 let g:svelte_preprocessors = ['typescript']
 
