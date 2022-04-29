@@ -31,7 +31,7 @@ set scrolloff=8
 set timeoutlen=300
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'morhetz/gruvbox'
+Plug 'Mofiqul/vscode.nvim'
 Plug 'tpope/vim-commentary' 
 Plug 'tpope/vim-fugitive' 
 Plug 'preservim/nerdtree' 
@@ -62,7 +62,7 @@ call plug#end()
 
 set background=dark
 let g:vscode_style = "dark"
-colorscheme gruvbox
+colorscheme vscode
 
 set tabstop=4 softtabstop=4
 set autoindent
