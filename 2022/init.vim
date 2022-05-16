@@ -281,10 +281,10 @@ endfunction
 
 map <leader>pp :call TogglePaste()<cr>
 
-augroup JEORDMAN
-    autocmd!
-    autocmd BufWritePre * :call TrimWhitespace()
-augroup END
+" augroup JEORDMAN
+"     autocmd!
+"     autocmd BufWritePre * :call TrimWhitespace()
+" augroup END
 
 " manual color settings for better comments
 hi QuestionBetterComments ctermfg=blue ctermbg=black
