@@ -117,9 +117,9 @@ colorscheme vscode
 let g:blamer_enabled = 0
 
 "! tab
-set tabstop=4 softtabstop=4
+set tabstop=2 softtabstop=2
 set autoindent
-set shiftwidth=4
+set shiftwidth=2
 set expandtab
 set smartindent
 auto BufReadPost	*.xx	retab! \t
