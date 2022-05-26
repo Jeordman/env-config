@@ -4,6 +4,6 @@
   "prettier.singleQuote": true,
   "prettier.jsxSingleQuote": false,
   "prettier.endOfLine": "auto",
-  "prettier.trailingComma": "es5",
-  "prettier.semi": true,
+  "prettier.trailingComma": "all",
+  "prettier.semi": true
  }
