@@ -1,7 +1,9 @@
 {
-  "prettier.useEditorConfig": false,
+   "prettier.useEditorConfig": false,
   "prettier.tabWidth": 2,
   "prettier.singleQuote": true,
   "prettier.jsxSingleQuote": false,
-  "prettier.endOfLine": "auto"
+  "prettier.endOfLine": "auto",
+  "prettier.trailingComma": "es5",
+  "prettier.semi": true,
  }
