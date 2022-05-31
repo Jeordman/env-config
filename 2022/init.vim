@@ -106,7 +106,7 @@ Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'StanAngeloff/php.vim'
 Plug 'modess/vim-phpcolors'
 
-" Plug 'folke/zen-mode.nvim'
+Plug 'folke/zen-mode.nvim'
 call plug#end()
 
 "color theme
@@ -354,10 +354,10 @@ let g:go_doc_keywordprg_enabled = 0
 " 	autocmd BufWritePost *_test.go :GoTest
 " augroup end
 
-" lua << EOF
-"   require("zen-mode").setup {
-"   }
-" EOF
+lua << EOF
+  require("zen-mode").setup {
+  }
+EOF
 
 let g:svelte_preprocessors = ['typescript']
 
