@@ -1,3 +1,4 @@
+
 " auto-install vim-plug (easier pluginmanager)
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
         silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
@@ -105,7 +106,7 @@ Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'StanAngeloff/php.vim'
 Plug 'modess/vim-phpcolors'
 
-Plug 'folke/zen-mode.nvim'
+" Plug 'folke/zen-mode.nvim'
 call plug#end()
 
 "color theme
@@ -117,9 +118,9 @@ colorscheme vscode
 let g:blamer_enabled = 0
 
 "! tab
-set tabstop=2 softtabstop=2
+set tabstop=4 softtabstop=4
 set autoindent
-set shiftwidth=2
+set shiftwidth=4
 set expandtab
 set smartindent
 auto BufReadPost	*.xx	retab! \t
@@ -152,6 +153,7 @@ let g:prettier#quickfix_enabled = 0
 let g:prettier#config#tab_width = 'auto'
 let g:prettier#config#use_tabs = 'false'
 let g:prettier#partial_format=1
+let g:prettier#config#config_precedence = 'file-override'
 
 let g:javascript_plugin_jsdoc = 1 " enable jsdoc
 
@@ -230,6 +232,8 @@ let g:coc_global_extensions = [
   \ 'coc-go',
   \ 'coc-sh',
   \ 'coc-yaml',
+  \ 'coc-rust-analyzer',
+  \ 'coc-toml'
   \ ]
 
 " Use K to show documentation
@@ -314,7 +318,6 @@ nnoremap <leader>p  :Telescope find_files theme=dropdown hidden=true<CR>
 " nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <silent> <C-f> :Telescope live_grep<CR>
 nnoremap <silent> <C-i> :Telescope resume<CR>
-nnoremap <silent> <C-b> :Telescope buffers<CR>
 
 " GOLANG
 set autowrite
@@ -351,10 +354,10 @@ let g:go_doc_keywordprg_enabled = 0
 " 	autocmd BufWritePost *_test.go :GoTest
 " augroup end
 
-lua << EOF
-  require("zen-mode").setup {
-  }
-EOF
+" lua << EOF
+"   require("zen-mode").setup {
+"   }
+" EOF
 
 let g:svelte_preprocessors = ['typescript']
 
