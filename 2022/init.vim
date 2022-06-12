@@ -1,4 +1,3 @@
-
 " auto-install vim-plug (easier pluginmanager)
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
         silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
@@ -50,15 +49,16 @@ set scrolloff=8
 set timeoutlen=300
 
 call plug#begin('~/.config/nvim/plugged')
-" style
+" color schemes "
 " Plug 'arzg/vim-colors-xcode'
 " Plug 'NLKNguyen/papercolor-theme'
+" Plug 'morhetz/gruvbox'
 Plug 'altercation/vim-colors-solarized'
-Plug 'morhetz/gruvbox'
 Plug 'Mofiqul/vscode.nvim'
-Plug 'jremmen/vim-ripgrep'
+" color schemes "
+Plug 'jremmen/vim-ripgrep' " search
 Plug 'mbbill/undotree'
-Plug 'tpope/vim-commentary' " Special comments
+Plug 'tpope/vim-commentary' " quickly comment out and in
 Plug 'tpope/vim-fugitive' " Git integration
 Plug 'preservim/nerdtree' " filetree
 
@@ -145,8 +145,12 @@ let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
+let g:airline_symbols.whitespace = ' '
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_section_y = ''
+let g:airline_section_z = ''
+let g:airline_skip_empty_sections = 1
+
 
 " Prettier autoformatting
 let g:prettier#quickfix_enabled = 0
@@ -252,8 +256,8 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " formatting on button press
-xnoremap <leader>f :PrettierFragment<cr>
 nmap <leader>f :Prettier<cr>
+xnoremap <leader>f :PrettierFragment<cr>
 
 " manage github
 nmap <leader>gs :G<cr>
