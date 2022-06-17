@@ -11,3 +11,6 @@
 https://github.com/neovim/neovim
 ### 3) insert files into root of computer --> make sure you do .tmux.conf BEFORE .bashrc (or use ./copy.sh)
 ### 4) open neovim config and run :PlugInstall
+
+my neovim uses this as well
+https://github.com/Jeordman/vimwiki
