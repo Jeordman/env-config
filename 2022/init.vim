@@ -53,7 +53,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Plug 'arzg/vim-colors-xcode'
 " Plug 'NLKNguyen/papercolor-theme'
 " Plug 'morhetz/gruvbox'
-Plug 'altercation/vim-colors-solarized'
+" Plug 'altercation/vim-colors-solarized'
 Plug 'Mofiqul/vscode.nvim'
 " color schemes "
 Plug 'jremmen/vim-ripgrep' " search
@@ -107,6 +107,7 @@ Plug 'StanAngeloff/php.vim'
 Plug 'modess/vim-phpcolors'
 
 Plug 'folke/zen-mode.nvim'
+Plug 'vimwiki/vimwiki'
 call plug#end()
 
 "color theme
