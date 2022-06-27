@@ -199,6 +199,7 @@ nnoremap <leader>= <C-w>=
 " open nerdtree at far left
 " nnoremap <leader>b :NERDTree <bar>:vertical resize 35<CR>
 let g:NERDTreeWinSize = 400
+let NERDTreeQuitOnOpen=1
 nnoremap <leader>b :NERDTree<CR>
 nnoremap <leader>bb :NERDTreeFind<CR>
 
