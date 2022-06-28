@@ -223,6 +223,7 @@ noremap <leader>` :bo term<cr>
 
 " Map Ctrl-Backspace to delete the previous word in insert mode.
 imap <C-BS> <C-W>
+inoremap <M-BS> <C-w>
 
 " Buffer management
 map qn :bn<cr>
