@@ -90,7 +90,7 @@ Plug 'heavenshell/vim-jsdoc', {
   \ 'for': ['javascript', 'javascript.jsx','typescript'],
   \ 'do': 'make install'
 \}
-Plug 'Yggdroot/indentLine' " Show indent levels
+" Plug 'Yggdroot/indentLine' " Show indent levels
 "
 Plug 'APZelos/blamer.nvim' " Show who wrote lines on wait
 Plug 'nvim-lua/plenary.nvim'
@@ -119,9 +119,9 @@ colorscheme vscode
 let g:blamer_enabled = 0
 
 "! tab
-set tabstop=2 softtabstop=2
+set tabstop=4 softtabstop=4
 set autoindent
-set shiftwidth=2
+set shiftwidth=4
 set expandtab
 set smartindent
 auto BufReadPost	*.xx	retab! \t
@@ -223,7 +223,6 @@ noremap <leader>` :bo term<cr>
 
 " Map Ctrl-Backspace to delete the previous word in insert mode.
 imap <C-BS> <C-W>
-inoremap <M-BS> <C-w>
 
 " Buffer management
 map qn :bn<cr>
