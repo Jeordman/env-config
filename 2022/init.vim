@@ -55,6 +55,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Plug 'morhetz/gruvbox'
 " Plug 'altercation/vim-colors-solarized'
 Plug 'Mofiqul/vscode.nvim'
+Plug 'sainnhe/everforest'
 " color schemes "
 Plug 'jremmen/vim-ripgrep' " search
 Plug 'mbbill/undotree'
@@ -108,12 +109,20 @@ Plug 'modess/vim-phpcolors'
 
 Plug 'folke/zen-mode.nvim'
 Plug 'vimwiki/vimwiki'
+Plug 'ericbn/vim-relativize'
+Plug 'romgrk/barbar.nvim'
+Plug 'kyazdani42/nvim-web-devicons' 
 call plug#end()
 
 "color theme
+if has('termguicolors')
+  set termguicolors
+endif
+" For dark version.
 set background=dark
-let g:vscode_style = "dark"
-colorscheme vscode
+" Available values: 'hard', 'medium'(default), 'soft'
+let g:everforest_better_performance = 1
+colorscheme everforest
 
 
 let g:blamer_enabled = 0
@@ -148,7 +157,6 @@ let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = ' '
-let g:airline#extensions#tabline#enabled = 1
 let g:airline_section_y = ''
 let g:airline_section_z = ''
 let g:airline_skip_empty_sections = 1
@@ -411,3 +419,16 @@ autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 let g:vim_json_conceal=0
 let NERDTreeShowHidden=1
 let b:coc_pairs_disabled = 1
+lua << EOF
+  require("bufferline").setup{ }
+EOF
+
+
+"" NOTE: If barbar's option dict isn't created yet, create it
+let bufferline = get(g:, 'bufferline', {})
+let bufferline.icons = v:false
+let bufferline.icon_separator_active = '▎'
+let bufferline.icon_separator_inactive = '▎'
+let bufferline.icon_close_tab = 'x'
+let bufferline.icon_close_tab_modified = '●'
+let bufferline.icon_pinned = '車'
