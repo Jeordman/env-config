@@ -112,6 +112,7 @@ Plug 'ericbn/vim-relativize'
 Plug 'romgrk/barbar.nvim'
 Plug 'kyazdani42/nvim-web-devicons' 
 Plug 'junegunn/goyo.vim'
+Plug 'easymotion/vim-easymotion'
 call plug#end()
 
 "color theme
@@ -431,3 +432,5 @@ let bufferline.icon_pinned = '車'
 let g:goyo_width = '60%'
 let g:goyo_height= '98%'
 nnoremap <leader>zz :Goyo<CR>
+
+nmap s <Plug>(easymotion-overwin-f)
