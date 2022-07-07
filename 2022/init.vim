@@ -69,7 +69,7 @@ Plug 'ekalinin/Dockerfile.vim' " Style dockerfiles
 " langs
 Plug 'pangloss/vim-javascript'    " JavaScript support
 Plug 'leafgarland/typescript-vim' " TypeScript syntax
-Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
+Plug 'peitalin/vim-jsx-typescript'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } " golang support
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-tsserver' " TS autocomplete
@@ -119,9 +119,10 @@ colorscheme vscode
 let g:blamer_enabled = 0
 
 "! tab
-set tabstop=4 softtabstop=4
+set tabstop=2
+set softtabstop=2
 set autoindent
-set shiftwidth=4
+set shiftwidth=2
 set expandtab
 set smartindent
 auto BufReadPost	*.xx	retab! \t
