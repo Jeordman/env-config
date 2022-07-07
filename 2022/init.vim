@@ -107,11 +107,11 @@ Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'StanAngeloff/php.vim'
 Plug 'modess/vim-phpcolors'
 
-Plug 'folke/zen-mode.nvim'
 Plug 'vimwiki/vimwiki'
 Plug 'ericbn/vim-relativize'
 Plug 'romgrk/barbar.nvim'
 Plug 'kyazdani42/nvim-web-devicons' 
+Plug 'junegunn/goyo.vim'
 call plug#end()
 
 "color theme
@@ -403,11 +403,6 @@ let g:go_doc_keywordprg_enabled = 0
 " 	autocmd BufWritePost *_test.go :GoTest
 " augroup end
 
-lua << EOF
-  require("zen-mode").setup {
-  }
-EOF
-
 let g:svelte_preprocessors = ['typescript']
 
 augroup filetypedetect
@@ -432,3 +427,7 @@ let bufferline.icon_separator_inactive = '▎'
 let bufferline.icon_close_tab = 'x'
 let bufferline.icon_close_tab_modified = '●'
 let bufferline.icon_pinned = '車'
+
+let g:goyo_width = '60%'
+let g:goyo_height= '98%'
+nnoremap <leader>zz :Goyo<CR>
