@@ -238,6 +238,7 @@ imap <C-BS> <C-W>
 map qn :bn<cr>
 map qp :bp<cr>
 map qd :bd<cr>
+map qdd :bufdo bd<cr>
 
 " coc languages config
 let g:coc_global_extensions = [
