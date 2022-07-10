@@ -55,4 +55,4 @@ sudo apt-get install gnome-tweak-tool
 
 ---
 ### For placing a keyboard on top of my mac keyboard without causing input I use 
-(Karibiner-Elements)[https://karabiner-elements.pqrs.org/]
+[Karibiner-Elements](https://karabiner-elements.pqrs.org/)
