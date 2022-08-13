@@ -93,6 +93,7 @@ Plug 'heavenshell/vim-jsdoc', {
 \}
 " Plug 'Yggdroot/indentLine' " Show indent levels
 "
+Plug 'APZelos/blamer.nvim' " Show who wrote lines on wait
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
@@ -108,8 +109,8 @@ Plug 'modess/vim-phpcolors'
 
 Plug 'vimwiki/vimwiki'
 Plug 'ericbn/vim-relativize'
-Plug 'kyazdani42/nvim-web-devicons' 
 Plug 'romgrk/barbar.nvim'
+Plug 'kyazdani42/nvim-web-devicons' 
 Plug 'junegunn/goyo.vim'
 Plug 'easymotion/vim-easymotion'
 call plug#end()
@@ -123,6 +124,9 @@ set background=dark
 " Available values: 'hard', 'medium'(default), 'soft'
 let g:everforest_better_performance = 1
 colorscheme everforest
+
+
+let g:blamer_enabled = 0
 
 "! tab
 set tabstop=2
@@ -231,8 +235,8 @@ noremap <leader>` :bo term<cr>
 imap <C-BS> <C-W>
 
 " Buffer management
-map qn :bn<cr>
-map qp :bp<cr>
+map qn <Cmd>BufferNext<CR>
+map qp <Cmd>BufferPrevious<CR>
 map qd :bd<cr>
 map qdd :bufdo bd<cr>
 
