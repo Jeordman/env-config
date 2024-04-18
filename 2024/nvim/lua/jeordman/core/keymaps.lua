@@ -6,7 +6,7 @@ local keymap = vim.keymap
 
 keymap.set("i", "jk", "<ESC>")
 keymap.set("n", "<leader>nh", ":nohl<CR>")
-keymap.set("n", "x", '"_x"') -- dont add del chars
+-- keymap.set("n", "x", '"_x"') -- dont add del chars
 
 keymap.set("n", "<leader>+", "<C-a>") -- inc nums
 keymap.set("n", "<leader>-", "<C-x>") -- dec nums
@@ -40,7 +40,9 @@ keymap.set("n", "<leader>b", ":NvimTreeToggle<CR>")
 
 -- telescope
 keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
+keymap.set('n', '<C-p>', '<cmd>Telescope find_files<CR>', { noremap = true, silent = true })
 keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>")
+keymap.set('n', '<C-f>', '<cmd>Telescope live_grep<CR>', { noremap = true, silent = true })
 keymap.set("n", "<leader>fc", "<cmd>Telescope grep_strings<cr>")
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
@@ -54,3 +56,4 @@ vim.api.nvim_set_keymap('n', '<leader>gj', ':diffget //2<cr>', {noremap = true, 
 vim.api.nvim_set_keymap('n', '<leader>gp', ':Git push<cr>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>gpu', ':Git push -u origin HEAD<cr>', {noremap = true, silent = true})
 
+vim.o.scrolloff = 6

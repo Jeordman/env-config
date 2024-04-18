@@ -30,10 +30,14 @@ vim.cmd('autocmd BufEnter * if &diff && winnr() == winnr(\'$\') | execute \'sign
 return packer.startup(function(use)
   use("wbthomason/packer.nvim")
 
+  use("goolord/alpha-nvim") -- dashboard 
+
   -- lua functions for other plugins
   use("nvim-lua/plenary.nvim")
 
-  use("bluz71/vim-nightfly-guicolors") -- colorscheme
+  -- use("bluz71/vim-nightfly-guicolors") -- colorscheme
+  -- use("ribru17/bamboo.nvim")
+  use("folke/tokyonight.nvim")
 
   -- tmux split 
   use("christoomey/vim-tmux-navigator")
@@ -109,6 +113,11 @@ return packer.startup(function(use)
   -- git
   use("lewis6991/gitsigns.nvim")
   use("tpope/vim-fugitive")
+
+  use("github/copilot.vim")
+
+  use({'mg979/vim-visual-multi', branch = "master"})
+
 
   if packer_bootstrap then
     require("packer").sync()
