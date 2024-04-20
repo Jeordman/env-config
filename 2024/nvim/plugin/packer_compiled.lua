@@ -94,6 +94,16 @@ _G.packer_plugins = {
     path = "/Users/jcallister/.local/share/nvim/site/pack/packer/start/alpha-nvim",
     url = "https://github.com/goolord/alpha-nvim"
   },
+  ["before.nvim"] = {
+    loaded = true,
+    path = "/Users/jcallister/.local/share/nvim/site/pack/packer/start/before.nvim",
+    url = "https://github.com/bloznelis/before.nvim"
+  },
+  ["better-comments.nvim"] = {
+    loaded = true,
+    path = "/Users/jcallister/.local/share/nvim/site/pack/packer/start/better-comments.nvim",
+    url = "https://github.com/Djancyp/better-comments.nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/Users/jcallister/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -195,6 +205,11 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/Users/jcallister/.local/share/nvim/site/pack/packer/opt/nvim-ts-autotag",
     url = "https://github.com/windwp/nvim-ts-autotag"
+  },
+  ["nvim-ts-context-commentstring"] = {
+    loaded = true,
+    path = "/Users/jcallister/.local/share/nvim/site/pack/packer/start/nvim-ts-context-commentstring",
+    url = "https://github.com/JoosepAlviste/nvim-ts-context-commentstring"
   },
   ["nvim-web-devicons"] = {
     loaded = true,

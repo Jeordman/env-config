@@ -63,7 +63,9 @@ return packer.startup(function(use)
 
   -- fuzzy finding
   use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+  use("bloznelis/before.nvim")
   use({ "nvim-telescope/telescope.nvim" })
+
 
   -- autocomplete
   use("hrsh7th/nvim-cmp")
@@ -97,6 +99,8 @@ return packer.startup(function(use)
   use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
   use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
 
+  use('Djancyp/better-comments.nvim')
+
    -- treesitter configuration
   use({
     "nvim-treesitter/nvim-treesitter",
@@ -118,6 +122,7 @@ return packer.startup(function(use)
 
   use({'mg979/vim-visual-multi', branch = "master"})
 
+  use('JoosepAlviste/nvim-ts-context-commentstring')
 
   if packer_bootstrap then
     require("packer").sync()

@@ -36,8 +36,9 @@ vim.api.nvim_set_keymap("n", "<leader>=", "<C-w>=", { noremap = true })
 keymap.set("n", "<leader>sm", ":MaximizerToggle<Cr>")
 
 -- nvim tree
-keymap.set("n", "<leader>b", ":NvimTreeToggle<CR>")
+keymap.set("n", "<leader>b", ":NvimTreeFindFile<CR>")
 
+local before = require('before')
 -- telescope
 keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
 keymap.set('n', '<C-p>', '<cmd>Telescope find_files<CR>', { noremap = true, silent = true })
@@ -46,6 +47,7 @@ keymap.set('n', '<C-f>', '<cmd>Telescope live_grep<CR>', { noremap = true, silen
 keymap.set("n", "<leader>fc", "<cmd>Telescope grep_strings<cr>")
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
+keymap.set('n', '<C-d>', ':Telescope resume<cr>', { noremap = true, silent = true })
 
 
 -- fugitive (git)

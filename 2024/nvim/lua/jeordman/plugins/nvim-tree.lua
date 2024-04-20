@@ -12,7 +12,6 @@ vim.g.loaded_netrwPlugin = 1
 vim.cmd([[ highlight NvimTreeIndentMarker guifg=#886ebc ]])
 -- vim.cmd([[ highlight NvimTree guifg=#886ebc ]])
 
-
 nvimtree.setup({
   renderer = {
       indent_markers = {

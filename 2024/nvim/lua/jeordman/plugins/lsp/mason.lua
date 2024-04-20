@@ -26,7 +26,8 @@ mason_lspconfig.setup({
     "jsonls",
     "marksman",
     "intelephense",
-    "cssls"
+    "cssls",
+    "dockerls",
   }
 })
 
