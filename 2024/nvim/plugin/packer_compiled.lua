@@ -94,11 +94,6 @@ _G.packer_plugins = {
     path = "/Users/jcallister/.local/share/nvim/site/pack/packer/start/alpha-nvim",
     url = "https://github.com/goolord/alpha-nvim"
   },
-  ["before.nvim"] = {
-    loaded = true,
-    path = "/Users/jcallister/.local/share/nvim/site/pack/packer/start/before.nvim",
-    url = "https://github.com/bloznelis/before.nvim"
-  },
   ["better-comments.nvim"] = {
     loaded = true,
     path = "/Users/jcallister/.local/share/nvim/site/pack/packer/start/better-comments.nvim",

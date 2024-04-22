@@ -16,10 +16,15 @@ require("jeordman.plugins.better-comments")
 require("jeordman.plugins.treesitter")
 require("jeordman.plugins.gitsigns")
 require("jeordman.plugins.alpha-nvim")
-require("jeordman.plugins.before")
 require("jeordman.plugins.nvim-ts-context-commentstring")
+-- require("jeordman.plugins.noice")
 
 -- ctrl + ] change directory in nerd
 --
 -- ctrl + ] forward git change
 -- ctrl + [ back git change
+--
+-- ctrl + c -> view commits
+-- ctrl + b -> view branches
+-- ctrl + s -> view git changes status
+-- TODO: get rid of requires

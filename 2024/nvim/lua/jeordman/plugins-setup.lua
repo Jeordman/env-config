@@ -63,7 +63,6 @@ return packer.startup(function(use)
 
   -- fuzzy finding
   use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-  use("bloznelis/before.nvim")
   use({ "nvim-telescope/telescope.nvim" })
 
 
@@ -123,6 +122,8 @@ return packer.startup(function(use)
   use({'mg979/vim-visual-multi', branch = "master"})
 
   use('JoosepAlviste/nvim-ts-context-commentstring')
+
+  -- use("folke/noice.nvim")
 
   if packer_bootstrap then
     require("packer").sync()

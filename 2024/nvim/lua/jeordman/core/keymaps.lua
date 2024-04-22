@@ -38,7 +38,6 @@ keymap.set("n", "<leader>sm", ":MaximizerToggle<Cr>")
 -- nvim tree
 keymap.set("n", "<leader>b", ":NvimTreeFindFile<CR>")
 
-local before = require('before')
 -- telescope
 keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
 keymap.set('n', '<C-p>', '<cmd>Telescope find_files<CR>', { noremap = true, silent = true })
@@ -48,6 +47,9 @@ keymap.set("n", "<leader>fc", "<cmd>Telescope grep_strings<cr>")
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
 keymap.set('n', '<C-d>', ':Telescope resume<cr>', { noremap = true, silent = true })
+keymap.set('n', '<C-s>', ':Telescope git_status<cr>', { noremap = true, silent = true })
+keymap.set('n', '<C-c>', ':Telescope git_commits<cr>', { noremap = true, silent = true })
+keymap.set('n', '<C-b>', ':Telescope git_branches<cr>', { noremap = true, silent = true })
 
 
 -- fugitive (git)
@@ -59,3 +61,7 @@ vim.api.nvim_set_keymap('n', '<leader>gp', ':Git push<cr>', {noremap = true, sil
 vim.api.nvim_set_keymap('n', '<leader>gpu', ':Git push -u origin HEAD<cr>', {noremap = true, silent = true})
 
 vim.o.scrolloff = 6
+
+vim.opt.nu = true
+vim.opt.relativenumber = true
+vim.o.statuscolumn = "%s %l %r "
