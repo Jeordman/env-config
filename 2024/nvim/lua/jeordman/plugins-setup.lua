@@ -129,6 +129,9 @@ return packer.startup(function(use)
       requires = { {"nvim-lua/plenary.nvim"} }
   }
 
+  -- train vim 
+  use('ThePrimeagen/vim-be-good')
+
   -- use("folke/noice.nvim")
 
   if packer_bootstrap then

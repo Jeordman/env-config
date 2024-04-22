@@ -11,10 +11,16 @@ if not cmp_nvim_lsp_status then
 end
 
 -- import typescript plugin safely
+--
 local typescript_setup, typescript = pcall(require, "typescript")
 if not typescript_setup then
   return
 end
+
+-- local php_setup, php = pcall(require, "php")
+-- if not php_setup then
+--   return
+-- end
 
 local keymap = vim.keymap
 
@@ -62,8 +68,28 @@ typescript.setup({
   },
 })
 
+lspconfig["jsonls"].setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+
+lspconfig["dockerls"].setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+
+lspconfig["marksman"].setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+
 -- configure css server
 lspconfig["cssls"].setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+
+lspconfig["php"].setup({
   capabilities = capabilities,
   on_attach = on_attach,
 })
@@ -93,6 +119,11 @@ lspconfig["lua_ls"].setup({
       },
     },
   },
+})
+
+lspconfig["intelephense"].setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
 })
 
 

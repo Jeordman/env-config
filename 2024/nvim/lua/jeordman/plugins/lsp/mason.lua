@@ -25,9 +25,8 @@ mason_lspconfig.setup({
     "lua_ls",
     "jsonls",
     "marksman",
-    "intelephense",
-    "cssls",
     "dockerls",
+    "intelephense",
   }
 })
 
