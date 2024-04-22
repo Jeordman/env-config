@@ -1,12 +1,12 @@
 require('better-comment').Setup({
   tags = {
-    {
-        name = "?",
-        fg = "white",
-        bg = "#0a7aca",
-        bold = true,
-        virtual_text = "",
-    },
+    -- { // caused 2 many lines to with question marks to be highlighted
+    --     name = "?",
+    --     fg = "white",
+    --     bg = "#0a7aca",
+    --     bold = true,
+    --     virtual_text = "",
+    -- },
     {
         name = "TODO",
         fg = "white",

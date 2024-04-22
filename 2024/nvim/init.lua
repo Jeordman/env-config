@@ -17,6 +17,7 @@ require("jeordman.plugins.treesitter")
 require("jeordman.plugins.gitsigns")
 require("jeordman.plugins.alpha-nvim")
 require("jeordman.plugins.nvim-ts-context-commentstring")
+require("jeordman.plugins.harpoon")
 -- require("jeordman.plugins.noice")
 
 -- ctrl + ] change directory in nerd
@@ -28,3 +29,6 @@ require("jeordman.plugins.nvim-ts-context-commentstring")
 -- ctrl + b -> view branches
 -- ctrl + s -> view git changes status
 -- TODO: get rid of requires
+--
+-- ctrl+e => harpoon
+-- leader a => add to harpoon

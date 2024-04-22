@@ -123,6 +123,12 @@ return packer.startup(function(use)
 
   use('JoosepAlviste/nvim-ts-context-commentstring')
 
+  use {
+      "ThePrimeagen/harpoon",
+      branch = "harpoon2",
+      requires = { {"nvim-lua/plenary.nvim"} }
+  }
+
   -- use("folke/noice.nvim")
 
   if packer_bootstrap then
