@@ -16,13 +16,13 @@ keymap.set("n", "<leader>sh", "<C-w>s") -- split horiz
 keymap.set("n", "<leader>se", "<C-w>=") -- split equal
 keymap.set("n", "<leader>sx", ":close<Cr>") -- close split
 -- other window commands
-vim.api.nvim_set_keymap("n", "<leader>h", ":wincmd h<CR>", { noremap = true })
+-- vim.api.nvim_set_keymap("n", "<leader>h", ":wincmd h<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>hh", ":wincmd H<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>j", ":wincmd j<CR>", { noremap = true })
+-- vim.api.nvim_set_keymap("n", "<leader>j", ":wincmd j<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>jj", ":wincmd J<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>k", ":wincmd k<CR>", { noremap = true })
+-- vim.api.nvim_set_keymap("n", "<leader>k", ":wincmd k<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>kk", ":wincmd K<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>l", ":wincmd l<CR>", { noremap = true })
+-- vim.api.nvim_set_keymap("n", "<leader>l", ":wincmd l<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>ll", ":wincmd L<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>+", "10<C-w>+", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>-", "10<C-w>-", { noremap = true })

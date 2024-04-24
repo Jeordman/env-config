@@ -3,6 +3,18 @@ local actions = require("telescope.actions")
 
 telescope.setup({
   defaults = {
+
+-- local conf = require('telescope.config').values
+-- require('telescope.builtin').live_grep {
+--   vimgrep_arguments = table.insert(conf.vimgrep_arguments, '--fixed-strings'),
+-- }
+    pickers = {
+      live_grep = {
+        vimgrep_arguments = {
+          "--fixed-strings",
+        },
+      },
+    },
     mappings = {
       i = {
         ["<C-k>"] = actions.move_selection_previous,
@@ -15,4 +27,3 @@ telescope.setup({
 })
 
 telescope.load_extension("fzf")
-
