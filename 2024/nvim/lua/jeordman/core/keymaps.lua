@@ -39,17 +39,13 @@ keymap.set("n", "<leader>sm", ":MaximizerToggle<Cr>")
 keymap.set("n", "<leader>b", ":NvimTreeFindFile<CR>")
 
 -- telescope
-keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
 keymap.set('n', '<C-p>', '<cmd>Telescope find_files<CR>', { noremap = true, silent = true })
-keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>")
-keymap.set('n', '<C-f>', '<cmd>Telescope live_grep<CR>', { noremap = true, silent = true })
-keymap.set("n", "<leader>fc", "<cmd>Telescope grep_strings<cr>")
-keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
-keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
+keymap.set("n", "<C-f>", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 keymap.set('n', '<C-d>', ':Telescope resume<cr>', { noremap = true, silent = true })
 keymap.set('n', '<C-s>', ':Telescope git_status<cr>', { noremap = true, silent = true })
 keymap.set('n', '<C-c>', ':Telescope git_commits<cr>', { noremap = true, silent = true })
 keymap.set('n', '<C-b>', ':Telescope git_branches<cr>', { noremap = true, silent = true })
+vim.keymap.set('n', 'gD', '<cmd>Telescope lsp_references<CR>', { noremap = true, silent = true })
 
 
 -- fugitive (git)

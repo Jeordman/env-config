@@ -25,23 +25,28 @@ null_ls.setup({
 			end,
 		}),
 	},
+  -- format when <leader>f is pressed
+  -- on_attach = function(client, bufnr)
+  --   vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", { noremap = true, silent = true })
+  -- end,
+
 	-- configure format on save
-	-- on_attach = function(current_client, bufnr)
-	-- 	if current_client.supports_method("textDocument/formatting") then
-	-- 		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-	-- 		vim.api.nvim_create_autocmd("BufWritePre", {
-	-- 			group = augroup,
-	-- 			buffer = bufnr,
-	-- 			callback = function()
-	-- 				vim.lsp.buf.format({
-	-- 					filter = function(client)
-	-- 						--  only use null-ls for formatting instead of lsp server
-	-- 						return client.name == "null-ls"
-	-- 					end,
-	-- 					bufnr = bufnr,
-	-- 				})
-	-- 			end,
-	-- 		})
-	-- 	end
-	-- end,
+	on_attach = function(current_client, bufnr)
+		if current_client.supports_method("textDocument/formatting") then
+			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				group = augroup,
+				buffer = bufnr,
+				callback = function()
+					vim.lsp.buf.format({
+						filter = function(client)
+							--  only use null-ls for formatting instead of lsp server
+							return client.name == "null-ls"
+						end,
+						bufnr = bufnr,
+					})
+				end,
+			})
+		end
+	end,
 })

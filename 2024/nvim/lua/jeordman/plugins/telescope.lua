@@ -9,11 +9,11 @@ telescope.setup({
 --   vimgrep_arguments = table.insert(conf.vimgrep_arguments, '--fixed-strings'),
 -- }
     pickers = {
-      live_grep = {
-        vimgrep_arguments = {
-          "--fixed-strings",
-        },
-      },
+      -- live_grep = {
+      --   vimgrep_arguments = {
+      --     "--fixed-strings",
+      --   },
+      -- },
     },
     mappings = {
       i = {
@@ -27,3 +27,4 @@ telescope.setup({
 })
 
 telescope.load_extension("fzf")
+telescope.load_extension("live_grep_args")

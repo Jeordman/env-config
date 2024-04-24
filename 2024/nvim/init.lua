@@ -18,6 +18,7 @@ require("jeordman.plugins.gitsigns")
 require("jeordman.plugins.alpha-nvim")
 require("jeordman.plugins.nvim-ts-context-commentstring")
 require("jeordman.plugins.harpoon")
+require("jeordman.plugins.treesitter-context")
 -- require("jeordman.plugins.noice")
 
 -- ctrl + ] change directory in nerd
@@ -32,3 +33,5 @@ require("jeordman.plugins.harpoon")
 --
 -- ctrl+e => harpoon
 -- leader a => add to harpoon
+--
+-- \ to escape in ripgrep

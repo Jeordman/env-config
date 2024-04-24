@@ -64,6 +64,7 @@ return packer.startup(function(use)
   -- fuzzy finding
   use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
   use({ "nvim-telescope/telescope.nvim" })
+  use({ "nvim-telescope/telescope-live-grep-args.nvim" })
 
 
   -- autocomplete
@@ -131,6 +132,8 @@ return packer.startup(function(use)
 
   -- train vim 
   use('ThePrimeagen/vim-be-good')
+  use('nvim-treesitter/nvim-treesitter-context')
+
 
   -- use("folke/noice.nvim")
 
