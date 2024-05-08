@@ -1,6 +1,6 @@
 local setup, nvimtree = pcall(require, "nvim-tree")
 if not setup then
-  return
+	return
 end
 
 -- recc settings
@@ -13,34 +13,39 @@ vim.cmd([[ highlight NvimTreeIndentMarker guifg=#886ebc ]])
 -- vim.cmd([[ highlight NvimTree guifg=#886ebc ]])
 
 nvimtree.setup({
-  renderer = {
-      indent_markers = {
-        enable = true,
-      },
-      icons = {
-        glyphs = {
-          folder = {
-            arrow_closed = "", -- arrow when folder is closed
-            arrow_open = "", -- arrow when folder is open
-          },
-        },
-      },
-    },
-  view = {
-    side = "right",
-    adaptive_size = true,
-  },
-  filters = {
-    dotfiles = true,
-  },
-  -- disable window_picker for
-  -- explorer to work well with
-  -- window splits
-  actions = {
-    open_file = {
-      window_picker = {
-        enable = false,
-      },
-    },
-  },
+	renderer = {
+		indent_markers = {
+			enable = true,
+		},
+		icons = {
+			glyphs = {
+				folder = {
+					arrow_closed = "", -- arrow when folder is closed
+					arrow_open = "", -- arrow when folder is open
+				},
+			},
+		},
+	},
+	git = {
+		enable = true,
+		ignore = false,
+		timeout = 500,
+	},
+	view = {
+		side = "right",
+		adaptive_size = true,
+	},
+	filters = {
+		dotfiles = true,
+	},
+	-- disable window_picker for
+	-- explorer to work well with
+	-- window splits
+	actions = {
+		open_file = {
+			window_picker = {
+				enable = false,
+			},
+		},
+	},
 })

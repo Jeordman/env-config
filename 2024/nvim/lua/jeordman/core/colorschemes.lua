@@ -1,7 +1,7 @@
 -- set colorscheme and fail gracefully if not here
 ---@diagnostic disable-next-line: param-type-mismatch
-local status, _ = pcall(vim.cmd, "colorscheme tokyonight-night")
+local status, _ = pcall(vim.cmd, "colorscheme tokyonight")
 if not status then
-  print("colorscheme not found!")
-  return
+	print("colorscheme not found!")
+	return
 end

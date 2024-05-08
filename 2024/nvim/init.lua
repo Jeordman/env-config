@@ -19,7 +19,7 @@ require("jeordman.plugins.alpha-nvim")
 require("jeordman.plugins.nvim-ts-context-commentstring")
 require("jeordman.plugins.harpoon")
 require("jeordman.plugins.treesitter-context")
--- require("jeordman.plugins.noice")
+require("jeordman.plugins.noice")
 
 -- ctrl + ] change directory in nerd
 --

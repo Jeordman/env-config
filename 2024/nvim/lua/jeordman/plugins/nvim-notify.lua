@@ -1,0 +1,6 @@
+-- require("notify").setup({
+-- 	stages = "slide",
+-- 	render = "minimal",
+-- 	background_colour = "NotifyBackground",
+-- 	timeout = 500,
+-- })
