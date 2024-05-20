@@ -137,6 +137,8 @@ return packer.startup(function(use)
 	use("ThePrimeagen/vim-be-good")
 	use("nvim-treesitter/nvim-treesitter-context")
 
+	use("chentoast/marks.nvim")
+
 	-- use({
 	-- 	"rcarriga/nvim-notify",
 	-- 	config = function()

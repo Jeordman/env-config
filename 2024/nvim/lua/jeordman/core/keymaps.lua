@@ -5,7 +5,6 @@ local keymap = vim.keymap
 -- general keymaps
 
 keymap.set("i", "jk", "<ESC>")
-keymap.set("n", "<leader>nh", ":nohl<CR>")
 -- keymap.set("n", "x", '"_x"') -- dont add del chars
 
 -- keymap.set("n", "<leader>+", "<C-a>") -- inc nums
@@ -24,11 +23,14 @@ vim.api.nvim_set_keymap("n", "<leader>k", ":wincmd k<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>kk", ":wincmd K<CR>", { noremap = true })
 -- vim.api.nvim_set_keymap("n", "<leader>l", ":wincmd l<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>ll", ":wincmd L<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>+", "10<C-w>+", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>-", "10<C-w>-", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader><", "10<C-w><", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>>", "10<C-w>>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>=", "<C-w>=", { noremap = true })
+-- vim.api.nvim_set_keymap("n", "<leader>+", "10<C-w>+", { noremap = true })
+-- vim.api.nvim_set_keymap("n", "<leader>-", "10<C-w>-", { noremap = true })
+-- vim.api.nvim_set_keymap("n", "<leader><", "10<C-w><", { noremap = true })
+-- vim.api.nvim_set_keymap("n", "<leader>>", "10<C-w>>", { noremap = true })
+-- vim.api.nvim_set_keymap("n", "<leader>=", "<C-w>=", { noremap = true })
+vim.api.nvim_set_keymap("n", "<C-d>", "<C-d>zz", { noremap = true })
+vim.api.nvim_set_keymap("n", "<C-u>", "<C-u>zz", { noremap = true })
+vim.o.scroll = 5
 
 -- plugin keymaps
 
@@ -41,7 +43,7 @@ keymap.set("n", "<leader>b", ":NvimTreeFindFile<CR>")
 -- telescope
 keymap.set("n", "<C-p>", "<cmd>Telescope find_files<CR>", { noremap = true, silent = true })
 keymap.set("n", "<C-f>", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
-keymap.set("n", "<C-d>", ":Telescope resume<cr>", { noremap = true, silent = true })
+keymap.set("n", "<C-w>", ":Telescope resume<cr>", { noremap = true, silent = true })
 keymap.set("n", "<C-s>", ":Telescope git_status<cr>", { noremap = true, silent = true })
 keymap.set("n", "<C-c>", ":Telescope git_commits<cr>", { noremap = true, silent = true })
 keymap.set("n", "<C-b>", ":Telescope git_branches<cr>", { noremap = true, silent = true })
