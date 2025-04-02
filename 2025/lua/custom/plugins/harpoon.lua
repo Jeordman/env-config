@@ -22,6 +22,22 @@ return {
       desc = 'harpoon quick menu',
     },
     {
+      '<leader>n',
+      function()
+        local harpoon = require 'harpoon'
+        harpoon:list():next()
+      end,
+      desc = 'next harpoon file',
+    },
+    {
+      '<leader>p',
+      function()
+        local harpoon = require 'harpoon'
+        harpoon:list():prev()
+      end,
+      desc = 'prev harpoon file',
+    },
+    {
       '<leader>1',
       function()
         require('harpoon'):list():select(1)
@@ -48,13 +64,6 @@ return {
         require('harpoon'):list():select(4)
       end,
       desc = 'harpoon to file 4',
-    },
-    {
-      '<leader>5',
-      function()
-        require('harpoon'):list():select(5)
-      end,
-      desc = 'harpoon to file 5',
     },
   },
 }
