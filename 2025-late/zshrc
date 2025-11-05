@@ -122,7 +122,8 @@ export NVM_DIR="$HOME/.nvm"
 
 alias v='nvim'
 alias multipull="find . -mindepth 1 -maxdepth 1 -type d -print -exec git -C {} pull \;"
-alias multimain="find . -mindepth 1 -maxdepth 1 -type d -print -exec git -C {} checkout main \;"
+alias multimain='find . -mindepth 1 -maxdepth 1 -type d -print -exec sh -c '\''cd "$1" && (git checkout main 2>/dev/null || git checkout master)'\'' _ {} \;'
 alias multi='multimain && multipull'
+alias config='cd ~/.config/nvim/'
 
 eval "$(thefuck --alias)"
